@@ -33,5 +33,27 @@ namespace UpMeet.Models
 
             return EventsByCity;
         }
+
+        public IEnumerable<JoinedItem> GetFavorites(int userID)
+        {
+            string queryString = "Select e.EventID, e.EventName, e.EventDate, e.EventDescription, e.EventCity, e.EventState, f.UserID, f.FavoriteID FROM EventsTBL e INNER JOIN Favorites f ON e.EventID = f.EventID Where UserID = @userID";
+            IEnumerable <JoinedItem> userFavorites = connection.Query<JoinedItem>(queryString, new { userID = userID });
+
+            return userFavorites;
+        }
+
+        public Object AddToFavorites(Favorite thing)
+        {
+            string commandString = "INSERT INTO Favorites (UserID, EventID) ";
+            commandString += "Values(@userID, @eventID)";
+            int results = connection.Execute(commandString, new { userID = thing.UserID, eventID = thing.EventID });
+
+            return new
+            {
+                result = results,
+                success = results == 1 ? true : false
+            };
+        }
+
     }
 }

@@ -1,0 +1,8 @@
+<div style="border: 1px solid red">Event Component</div>
+
+<div *ngFor="let e of events">
+  <h2>{{ e.eventName }}</h2>  <button (click) ="addToFavorites(e.eventID)">Add To Favorites</button>
+  <p>{{ e.eventDescription }}</p>
+  <p>{{ e.eventCity }}</p>
+  <p>{{ e.eventState }}</p>
+</div>

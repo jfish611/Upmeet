@@ -1,0 +1,11 @@
+<div style="border: 1px solid red">Favorites Component</div>
+
+<div *ngFor="let f of favorites">
+
+  <p>{{f.eventName}}</p>
+  <p>{{f.eventDate | date}}</p>
+  <p>{{f.eventDescription}}</p>
+  <p>{{f.eventCity}}</p>
+  <p>{{f.eventState}}</p>
+</div>
+
