@@ -45,6 +45,19 @@ namespace UpMeet.Models
             return userFavorites;
         }
 
+        public Object AddEvent(Event newEvent)
+        {
+            string commandString = "INSERT INTO EventsTBS(EventName, EventDate, EventDescription, EventCity, EventState) ";
+            commandString += "Values(@EventName, @EventDate, @EventDescription, @EventCity, @EventState)";
+            int results = connection.Execute(commandString, new { EventName = newEvent.EventName, EventDate = newEvent.EventDate, EventDescription = newEvent.EventDescription, EventCity = newEvent.EventCity, EventState = newEvent.EventState, });
+
+            return new
+            {
+                result = results,
+                success = results == 1 ? true : false
+            };
+        }
+
         public Object AddToFavorites(Favorite thing)
         {
             string commandString = "INSERT INTO Favorites (UserID, EventID) ";

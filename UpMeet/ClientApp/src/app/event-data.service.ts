@@ -9,4 +9,5 @@ export class EventDataService {
   getEvents() {
     return this.http.get<Event[]>('/api/event');
   }
+
 }

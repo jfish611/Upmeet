@@ -6,3 +6,5 @@
   <p>{{ e.eventCity }}</p>
   <p>{{ e.eventState }}</p>
 </div>
+<button (click)="initiate()">Add an Event</button>
+<app-event-form *ngIf="initiated"></app-event-form>

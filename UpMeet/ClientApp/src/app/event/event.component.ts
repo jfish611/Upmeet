@@ -29,10 +29,26 @@ export class EventComponent {
     );
   }
 
+
+
+  initiated: boolean = false;
+
+  initiate = function (): void {
+    this.initiated = !this.initiated
+  }
+
   addToFavorites(id: number) {
     this.favoriteService.addFavorites(id).subscribe(
       error => console.error(error))
     //ToDo - come back to this after building up favorites component
   }
+
+  addEvent() {
+    //this.eventData.addEvent()
+  }
+
+
+
+
 }
 

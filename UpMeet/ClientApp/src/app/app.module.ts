@@ -10,6 +10,7 @@ import { EventComponent } from './event/event.component';
 import { EventDataService } from './event-data.service';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { FavoritesService } from './favorites.service';
+import { EventFormComponent } from './event-form/event-form.component'
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FavoritesService } from './favorites.service';
     NavMenuComponent,
     EventComponent,
     FavoritesComponent,
+    EventFormComponent
 
   ],
   imports: [
