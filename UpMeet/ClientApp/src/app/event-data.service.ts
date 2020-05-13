@@ -10,4 +10,9 @@ export class EventDataService {
     return this.http.get<Event[]>('/api/event');
   }
 
+  submitEvent(newEvent: Event) {
+    return this.http.post('/api/event', newEvent);
+  }
+
+
 }

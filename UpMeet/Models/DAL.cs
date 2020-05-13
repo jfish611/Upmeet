@@ -47,7 +47,7 @@ namespace UpMeet.Models
 
         public Object AddEvent(Event newEvent)
         {
-            string commandString = "INSERT INTO EventsTBS(EventName, EventDate, EventDescription, EventCity, EventState) ";
+            string commandString = "INSERT INTO EventsTBL(EventName, EventDate, EventDescription, EventCity, EventState) ";
             commandString += "Values(@EventName, @EventDate, @EventDescription, @EventCity, @EventState)";
             int results = connection.Execute(commandString, new { EventName = newEvent.EventName, EventDate = newEvent.EventDate, EventDescription = newEvent.EventDescription, EventCity = newEvent.EventCity, EventState = newEvent.EventState, });
 
