@@ -10,13 +10,29 @@ import { Favorite, JoinedItem } from '../Interfaces/Favorites'
 })
 /** Favorites component*/
 export class FavoritesComponent {
+
+
 /** Favorites ctor */
- 
   constructor(private favoriteService: FavoritesService, private eventService: EventDataService) { }
 
     favorites: JoinedItem[];
 
   ngOnInit() {
+    this.get();
+  }
+
+
+  deleteFavorite(id: number) {
+    this.favoriteService.deleteFavorite(id).subscribe(
+      (data: any) => {
+        console.log('DELETE FAVORITE DATA:' + data);
+        this.get();
+      },
+      error => console.error(error)
+    );
+  }
+
+  get() {
     this.favoriteService.getFavorites().subscribe(
       (data: JoinedItem[]) => {
         this.favorites = data;
@@ -25,4 +41,6 @@ export class FavoritesComponent {
       error => console.error(error)
     );
   }
-}
+  }
+
+  

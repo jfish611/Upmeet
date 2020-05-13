@@ -17,6 +17,10 @@ export class FavoritesService {
     return this.http.get<JoinedItem[]>('/api/favorites/'+ this.userID);
   }
 
+  deleteFavorite(eventID: number) {
+    return this.http.delete('/api/favorites/' + eventID);
+  }
+
   addFavorites(eventID: number) {
     let thing: Favorite = {
     FavoriteID: 0,

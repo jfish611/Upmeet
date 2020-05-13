@@ -20,12 +20,15 @@ namespace UpMeet.Controllers
             dal = new DAL(config.GetConnectionString("default"));
         }
 
-        [HttpGet("userID/{id}")]
+      
+
+        [HttpGet("{userID}")]
         public IEnumerable<JoinedItem> GetUserFavorites(int userID)
         {
             IEnumerable<JoinedItem> UserFavorites = dal.GetFavorites(userID);
             return UserFavorites;
         }
+
 
         //Post/Add to Favorites
         [HttpPost]
@@ -33,6 +36,12 @@ namespace UpMeet.Controllers
         {
             Object results = dal.AddToFavorites(thing);
             return results;
+        }
+
+        [HttpDelete("{id}")]
+        public Object deleteFavorite(int id)
+        {
+            return dal.deleteFavorite(id);
         }
     }
 }
