@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Event } from '../interfaces/Event';
 import { EventDataService } from '../event-data.service';
+
 
 @Component({
   selector: 'app-event-form',
@@ -9,8 +10,9 @@ import { EventDataService } from '../event-data.service';
 })
 /** EventForm component*/
 export class EventFormComponent {
-  newEvent: Event = { eventName: '', eventDate: '', eventCity: '', eventDescription: '', eventState: '', eventID:44 };
-
+  newEvent: Event = { eventName: '', eventDate: '', eventCity: '', eventDescription: '', eventState: '', eventID: 0 };
+  hideForm: boolean = false;
+  @Output() refreshPage = new EventEmitter();
 
   /** EventForm ctor */
   constructor(private eventData: EventDataService) {
@@ -23,16 +25,27 @@ export class EventFormComponent {
       (data: any) => {
       },
       error => console.error(error)
+
+    );
+    this.newEvent.eventName = '';
+    this.newEvent.eventDate = '';
+    this.newEvent.eventCity = '';
+    this.newEvent.eventDescription = '';
+    this.newEvent.eventState = '';
+    this.hideForm = true;
+    this.eventData.getEvents().subscribe((data: any) => {
+    this.refreshPage.emit(null);
+    },
+      error => console.error(error)
+
     );
   }
+
+
+
+
+
+
+
+
 }
-
-
-    //this.name = '';
-    //this.date = '';
-
-
-
-
-
-

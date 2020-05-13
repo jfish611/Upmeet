@@ -20,6 +20,10 @@ export class EventComponent {
   events: Event[];
 
   ngOnInit() {
+    this.refresh(null);
+  }
+
+  refresh = function (str: string) {
     this.eventData.getEvents().subscribe(
       (data: Event[]) => {
         this.events = data;
@@ -28,7 +32,6 @@ export class EventComponent {
       error => console.error(error)
     );
   }
-
 
 
   initiated: boolean = false;

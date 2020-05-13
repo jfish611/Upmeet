@@ -7,4 +7,4 @@
   <p>{{ e.eventState }}</p>
 </div>
 <button (click)="initiate()">Add an Event</button>
-<app-event-form *ngIf="initiated"></app-event-form>
+<app-event-form *ngIf="initiated" (refreshPage)="refresh($event)"></app-event-form>
